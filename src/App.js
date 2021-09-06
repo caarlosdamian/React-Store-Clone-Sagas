@@ -5,10 +5,25 @@ import Header from "./components/Header/Header";
 import store from "./redux/store";
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  useHistory
+} from "react-router-dom";
 import ProtectedRoutes from "./routes/ProtectedRoutes";
+import { setToken, setUser } from "./redux/auth/reducer";
 
 function App() {
+  const history = useHistory();
+  console.log(history)
+  const token = window.localStorage.getItem("token");
+  if (token) {
+    store.dispatch(setToken(token));
+    store.dispatch(setUser(true));
+  }
+
+
   return (
     <Provider store={store}>
       <Router>

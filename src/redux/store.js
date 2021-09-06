@@ -3,7 +3,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 import authReducer from "./auth/reducer";
 import collectionReducer from "./collection/reducer";
-
+import cartReducer from "./cart/reducer";
 
 import rootSaga from "./rootsaga";
 
@@ -14,6 +14,7 @@ const store = configureStore({
   reducer: {
     collectionReducer,
     authReducer,
+    cartReducer,
   },
   middleware: [sagaMiddleware],
 });

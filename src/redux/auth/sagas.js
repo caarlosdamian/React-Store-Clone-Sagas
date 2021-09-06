@@ -14,14 +14,14 @@ function* onLogin(action) {
   if (success) {
     yield put(setToken(data.token));
     yield put(setUser(true));
-    yield window.localStorage.setItem("el-token", data.token);
+    yield window.localStorage.setItem("token", data.token);
   } else {
     yield call(displayError, message);
   }
 }
 
 function* onSignOut() {
-  yield window.localStorage.removeItem("el-token");
+  yield window.localStorage.removeItem("token");
   yield call(Window.nav.push, "/");
 }
 
